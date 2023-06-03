@@ -16,7 +16,7 @@ class ContactForm extends Component {
   isContainsInputedName() {
     const { contacts } = this.props;
     const inputedName = this.state.name;
-    return !!contacts.find(
+    return contacts.find(
       contact => contact.name.toLowerCase() === inputedName.toLowerCase()
     );
   }
