@@ -1,0 +1,21 @@
+.ContactList {
+}
+
+.item {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.contactInfo {
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.name {
+  margin-left: 15px;
+}

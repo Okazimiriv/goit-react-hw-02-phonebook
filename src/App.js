@@ -1,33 +1,45 @@
 import React, { Component } from 'react';
+import shortId from 'shortid';
 
 import Container from 'components/Container';
 import ContactForm from 'components/ContactForm';
+import ContactList from 'components/ContactList';
+
+import initialContacts from '../src/contacts.json';
 
 class App extends Component {
   state = {
-    contacts: [],
-    name: '',
-    number: '',
+    contacts: initialContacts,
   };
 
   onContactFormSubmit = contactData => {
-    // const { name, number } = contactData;
-    console.log(contactData);
+    const id = shortId.generate();
+    const { name, number } = contactData;
+    const newContact = { id, name, number };
+    console.log('name', name);
+    console.log('number', number);
+
+    this.setState(({ contacts }) => {
+      return {
+        contacts: [newContact, ...contacts],
+      };
+    });
   };
 
   render() {
+    const { contacts } = this.state;
+
     return (
       <Container>
         <h1>Phonebook</h1>
-        <ContactForm onAddContact={this.onContactFormSubmit} />
-        <div>
-          <h2>Contacts</h2>
-          <ul>
-            <li>Rosie Simpson</li>
-            <li>Hermione Kline</li>
-            <li>Eden Clements</li>
-          </ul>
-        </div>
+        <ContactForm
+          onAddContact={this.onContactFormSubmit}
+          contacts={contacts}
+        />
+
+        <h2>Contacts</h2>
+        {/* <Filter ... /> */}
+        <ContactList contacts={contacts} />
       </Container>
     );
   }
