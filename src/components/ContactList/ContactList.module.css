@@ -1,4 +1,5 @@
 .ContactList {
+  padding-left: 0px;
 }
 
 .item {
@@ -13,9 +14,24 @@
 .contactInfo {
   display: flex;
   font-size: 18px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .name {
   margin-left: 15px;
+}
+
+.button {
+  padding: 5px 20px;
+
+  background-color: teal;
+  border: none;
+  outline: none;
+  color: aliceblue;
+  border-radius: 5px;
+
+  &:hover,
+  &:focus {
+    background-color: #008080a8;
+  }
 }
