@@ -1,8 +1,9 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import shortId from 'shortid';
 import styles from './Filter.module.css';
 
-const Filter = ({ value, onFilterChange }) => {
+const Filter = ({ value, onChange }) => {
   const id = shortId.generate();
 
   return (
@@ -16,7 +17,7 @@ const Filter = ({ value, onFilterChange }) => {
         type="text"
         name="filter"
         value={value}
-        onChange={onFilterChange}
+        onChange={onChange}
         placeholder="Enter contact's name"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title=" Enter name may contain only letters, apostrophe, dash and spaces."
@@ -29,5 +30,5 @@ export default Filter;
 
 PropTypes.Filter = {
   value: PropTypes.string.isRequired,
-  onFilterChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };

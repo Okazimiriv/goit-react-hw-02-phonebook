@@ -34,8 +34,8 @@ class App extends Component {
     }));
   };
 
-  onFilterChange = ({ target }) => {
-    this.setState({ filter: target.value.toLowerCase() });
+  changeFilter = ({ target }) => {
+    this.setState({ filter: target.value });
   };
 
   render() {
@@ -50,7 +50,7 @@ class App extends Component {
         />
 
         <h2>Contacts</h2>
-        <Filter value={filter} onFilterChange={this.onFilterChange} />
+        <Filter value={filter} onChange={this.changeFilter} />
         <ContactList contacts={contacts} onDeleteContact={this.deleteContact} />
       </Container>
     );
