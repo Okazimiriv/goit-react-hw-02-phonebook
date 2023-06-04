@@ -14,13 +14,13 @@ class ContactForm extends Component {
   nameInputId = shortId.generate();
   numberInputId = shortId.generate();
 
-  isContainsInputedName() {
-    const { contacts } = this.props;
-    const inputedName = this.state.name;
-    return contacts.find(
-      contact => contact.name.toLowerCase() === inputedName.toLowerCase()
-    );
-  }
+  // isContainsInputedName() {
+  //   const { contacts } = this.props;
+  //   const inputedName = this.state.name;
+  //   return contacts.find(
+  //     contact => contact.name.toLowerCase() === inputedName.toLowerCase()
+  //   );
+  // }
 
   handleChange = event => {
     const { target } = event;
@@ -32,14 +32,13 @@ class ContactForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    if (this.isContainsInputedName()) {
-      alert(`${this.state.name} is already in contacts`);
-      return;
-    }
+    // if (this.isContainsInputedName()) {
+    //   alert(`${this.state.name} is already in contacts`);
+    //   return;
+    // }
 
     const data = this.state;
     this.props.onAddContact(data);
-    console.log('data', data);
 
     this.setState({
       name: '',

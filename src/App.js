@@ -18,14 +18,20 @@ class App extends Component {
     const id = shortId.generate();
     const { name, number } = contactData;
     const newContact = { id, name, number };
-    console.log('name', name);
-    console.log('number', number);
 
-    this.setState(({ contacts }) => {
-      return {
-        contacts: [...contacts, newContact],
-      };
-    });
+    if (
+      this.state.contacts.find(
+        contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
+      )
+    ) {
+      alert(`${newContact.name} is already in contacts`);
+      return;
+    } else
+      this.setState(({ contacts }) => {
+        return {
+          contacts: [...contacts, newContact],
+        };
+      });
   };
 
   deleteContact = contactId => {
@@ -48,16 +54,13 @@ class App extends Component {
   };
 
   render() {
-    const { contacts, filter } = this.state;
+    const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
 
     return (
       <Container>
         <h1>Phonebook</h1>
-        <ContactForm
-          onAddContact={this.onContactFormSubmit}
-          contacts={contacts}
-        />
+        <ContactForm onAddContact={this.onContactFormSubmit} />
 
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter} />
