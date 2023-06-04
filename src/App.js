@@ -50,7 +50,7 @@ class App extends Component {
         />
 
         <h2>Contacts</h2>
-        <Filter value={filter} onChange={this.onFilterChange} />
+        <Filter value={filter} onFilterChange={this.onFilterChange} />
         <ContactList contacts={contacts} onDeleteContact={this.deleteContact} />
       </Container>
     );
