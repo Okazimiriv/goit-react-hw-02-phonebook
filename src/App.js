@@ -4,12 +4,14 @@ import shortId from 'shortid';
 import Container from 'components/Container';
 import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
+import Filter from 'components/Filter';
 
 import initialContacts from '../src/contacts.json';
 
 class App extends Component {
   state = {
     contacts: initialContacts,
+    filter: '',
   };
 
   onContactFormSubmit = contactData => {
@@ -32,8 +34,12 @@ class App extends Component {
     }));
   };
 
+  onFilterChange = ({ target }) => {
+    this.setState({ filter: target.value.toLowerCase() });
+  };
+
   render() {
-    const { contacts } = this.state;
+    const { contacts, filter } = this.state;
 
     return (
       <Container>
@@ -44,7 +50,7 @@ class App extends Component {
         />
 
         <h2>Contacts</h2>
-        {/* <Filter ... /> */}
+        <Filter value={filter} onChange={this.onFilterChange} />
         <ContactList contacts={contacts} onDeleteContact={this.deleteContact} />
       </Container>
     );
