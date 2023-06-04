@@ -38,12 +38,18 @@ class App extends Component {
     this.setState({ filter: target.value });
   };
 
-  render() {
-    const { contacts, filter } = this.state;
+  getVisibleContacts = () => {
+    const { filter, contacts } = this.state;
+
     const normalizedFilter = filter.toLowerCase();
-    const visibleContacts = contacts.filter(contact =>
+    return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
+  };
+
+  render() {
+    const { contacts, filter } = this.state;
+    const visibleContacts = this.getVisibleContacts();
 
     return (
       <Container>
